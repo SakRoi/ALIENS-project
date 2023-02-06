@@ -31,7 +31,7 @@ class AlienInvasion:
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pyhame.K_RIGHT:
+                if event.key == pygame.K_RIGHT:
                     # Move the ship to the right.
                     self.ship.rect.x += 1
 
