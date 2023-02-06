@@ -13,6 +13,17 @@ class Ship:
         self.rect = self.image.get_rect()
         #Starts the ship at the bottom of the screen
         self.rect.midbottom = self.screen_rect.midbottom
+
+        #Movement flags
+        self.moving_right = False
+        self.moving_left = False
+    
+    def update(self):
+        if self.moving_right == True:
+            self.rect.x += 1
+        elif self.moving_left == True:
+            self.rect.x -= 1
+
     
     def blitme(self) -> None:
         """Draw the ship at it's current location."""
