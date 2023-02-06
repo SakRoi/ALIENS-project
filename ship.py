@@ -1,5 +1,4 @@
 import pygame
-from settings import Settings
 
 class Ship:
     """A simple class to represent an alien spaceship"""
@@ -17,7 +16,7 @@ class Ship:
         self.rect.midbottom = self.screen_rect.midbottom
         
         #Intialize settings
-        self.settings = Settings()
+        self.settings = ai_game.settings
 
         #Movement flags
         self.moving_right = False
