@@ -14,7 +14,10 @@ class Ship:
 
         #Starts the ship at the bottom of the screen
         self.rect.midbottom = self.screen_rect.midbottom
-        
+
+        #Stores the ship's horizontal position in decimals
+        self.x = float(self.rect.x)
+
         #Intialize settings
         self.settings = ai_game.settings
 
@@ -23,10 +26,13 @@ class Ship:
         self.moving_left = False
     
     def update(self):
-        if self.moving_right == True:
-            self.rect.x += self.settings.ship_speed
-        if self.moving_left == True:
-            self.rect.x -= self.settings.ship_speed
+        if self.moving_right == True and self.rect.right < self.screen_rect.right:
+            self.x += self.settings.ship_speed
+        if self.moving_left == True and self.rect.left > 0:
+            self.x -= self.settings.ship_speed
+
+        #Updates rect object to be self.x
+        self.rect.x = self.x
 
     
     def blitme(self) -> None:
