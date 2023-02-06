@@ -31,7 +31,7 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 sys.exit()
             else:
                 self._right_movement_checker(event)
