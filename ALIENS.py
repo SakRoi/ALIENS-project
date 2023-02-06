@@ -28,17 +28,22 @@ class AlienInvasion:
     def _check_events(self) -> None:
         """Respond to keypresses and mouse events"""
         for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+            if event.type == pygame.QUIT:
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pyhame.K_RIGHT:
+                    # Move the ship to the right.
+                    self.ship.rect.x += 1
+
     
     def _update_screen(self) -> None:
         """Updates the screen each loop"""
         # Redraws the screen during each pass though the loop
-            self.screen.fill(self.settings.background_color)
-            self.ship.blitme()
+        self.screen.fill(self.settings.background_color)
+        self.ship.blitme()
 
-            # Make the most recently drawn screen visible.
-            pygame.display.flip()
+        # Make the most recently drawn screen visible.
+        pygame.display.flip()
 
 if __name__ == "__main__":
     ai = AlienInvasion()
