@@ -1,4 +1,5 @@
 import pygame
+from settings import Settings
 
 class Ship:
     """A simple class to represent an alien spaceship"""
@@ -11,8 +12,12 @@ class Ship:
         #load the ship image and get it's rect.
         self.image = pygame.image.load("images/ship.bmp")
         self.rect = self.image.get_rect()
+
         #Starts the ship at the bottom of the screen
         self.rect.midbottom = self.screen_rect.midbottom
+        
+        #Intialize settings
+        self.settings = Settings()
 
         #Movement flags
         self.moving_right = False
@@ -20,9 +25,9 @@ class Ship:
     
     def update(self):
         if self.moving_right == True:
-            self.rect.x += 1
+            self.rect.x += self.settings.ship_speed
         if self.moving_left == True:
-            self.rect.x -= 1
+            self.rect.x -= self.settings.ship_speed
 
     
     def blitme(self) -> None:
