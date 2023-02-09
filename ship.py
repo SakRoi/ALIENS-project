@@ -25,7 +25,7 @@ class Ship:
         self.moving_right = False
         self.moving_left = False
     
-    def update(self):
+    def update(self) -> None:
         if self.moving_right == True and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
         if self.moving_left == True and self.rect.left > 0:

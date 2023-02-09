@@ -2,7 +2,7 @@
 class Settings:
     """A class that stores all the settings for ALIENS"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the game's settings."""
         #Screen settings
         self.fullscreen = True

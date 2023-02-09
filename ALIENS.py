@@ -9,7 +9,7 @@ from bullet import Bullet
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
 
-    def __init__ (self):
+    def __init__ (self) -> None:
         """intialize the game and create game resources"""
         pygame.init()
         self.settings = Settings()
