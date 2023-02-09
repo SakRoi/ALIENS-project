@@ -39,8 +39,6 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                sys.exit()
             else:
                 self._right_movement_checker(event)
                 self._left_movement_checker(event)
@@ -62,6 +60,8 @@ class AlienInvasion:
             elif event.key == pygame.K_LEFT:
                 # Move the ship to the left.
                 self.ship.moving_left = True
+            elif event.key == pygame.K_ESCAPE:
+                sys.exit()
  
     def _update_screen(self) -> None:
         """Updates the screen each loop"""
