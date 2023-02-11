@@ -20,7 +20,8 @@ class AlienInvasion:
             self.settings.screen_width = self.screen.get_rect().width
             self.settings.screen_height = self.screen.get_rect().height
         else: 
-            self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+            self.screen = pygame.display.set_mode\
+                ((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
         self.ship = Ship(self)
@@ -95,7 +96,8 @@ class AlienInvasion:
         available_space_x = self.settings.screen_width -(2*alien_width)
         number_of_aliens_x = available_space_x // (2*alien_width)
 
-        available_space_y = self.settings.screen_height-(3*alien_height)-ship_height
+        available_space_y = self.settings.screen_height\
+                            -(3*alien_height)-ship_height
         number_of_rows_y = available_space_y // (2*alien_height)
         for row_number in range(number_of_rows_y):
             for alien_number in range(number_of_aliens_x):
@@ -104,9 +106,10 @@ class AlienInvasion:
     def _create_alien(self, alien_number: int, row_number: int) -> None:
         """A function to create a new alien whenever it is called"""
         alien = Alien(self)
-        alien_width = alien.rect.width
+        alien_width, alien_height = alien.rect.size
         alien.x = alien_width + (2 * alien_width * alien_number)
         alien.rect.x = alien.x
+        alien.y = alien_height + (2*alien.rect.height*row_number)
         self.fleet.add(alien)
  
     def _update_screen(self) -> None:
