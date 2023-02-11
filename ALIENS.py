@@ -27,6 +27,8 @@ class AlienInvasion:
         self.bullets = pygame.sprite.Group()
         self.fleet = pygame.sprite.Group()
 
+        self._create_fleet()
+
     def run_game(self) -> None:
         """Start the main loop for the game"""
         while True:
@@ -89,7 +91,6 @@ class AlienInvasion:
         """A helper function to create a fleet"""
         alien = Alien(self)
         self.fleet.add(alien)
-
  
     def _update_screen(self) -> None:
         """Updates the screen each loop"""
@@ -100,6 +101,7 @@ class AlienInvasion:
         #bullet drawing
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        self.fleet.draw(self.screen)
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 

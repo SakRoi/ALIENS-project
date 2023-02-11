@@ -1,15 +1,15 @@
 import pygame
-from pygame import Sprite
+from pygame.sprite import Sprite
 
 class Alien(Sprite):
     """A class to represent a single alien"""
     def __init__ (self, ai_game):
         """Intialize the alien and set it's starting position"""
-        super().__init()
+        super().__init__()
         self.screen = ai_game.screen
 
         # Load the alien and set its rect attribute.
-        self.image = pygame.image.load("images.alien.bmp")
+        self.image = pygame.image.load("images/alien.bmp")
         self.rect = self.image.get_rect()
 
         # Spawn a new alien near the top left of the screen
