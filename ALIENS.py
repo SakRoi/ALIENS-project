@@ -116,7 +116,9 @@ class AlienInvasion:
         self.fleet.add(alien)
     
     def _update_aliens(self) -> None:
- 
+        """Updates the aliens each loop"""
+        self.fleet.update()
+
     def _update_screen(self) -> None:
         """Updates the screen each loop"""
         # Redraws the screen during each pass though the loop
