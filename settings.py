@@ -9,6 +9,9 @@ class Settings:
         self.screen_width = 1200
         self.screen_height = 800
         self.background_color = (0, 0, 100)
+
+        #Alien's settings
+        self.alien_speed = 1.0
         
         #Ship's settings
         self.ship_speed = 1.5
