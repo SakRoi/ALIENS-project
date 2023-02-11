@@ -22,3 +22,4 @@ class Alien(Sprite):
     
     def update(self) -> None:
         self.x += self.settings.alien_speed
+        self.rect.x = self.x
