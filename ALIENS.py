@@ -90,15 +90,24 @@ class AlienInvasion:
     def _create_fleet(self) -> None:
         """A helper function to create a fleet"""
         alien = Alien(self)
-        alien_width = alien.rect.width
+        alien_width, alien_height = alien.rect.size
+        ship_height = self.ship.rect.height
         available_space_x = self.settings.screen_width -(2*alien_width)
         number_of_aliens_x = available_space_x // (2*alien_width)
 
-        for alien_number in range(number_of_aliens_x):
-            alien = Alien(self)
-            alien.x = alien_width + (2 * alien_width * alien_number)
-            alien.rect.x = alien.x
-            self.fleet.add(alien)
+        available_space_y = self.settings.screen_height-(3*alien_height)-ship_height
+        number_of_rows_y = available_space_y // (2*alien_height)
+        for row_number in range(number_of_rows_y):
+            for alien_number in range(number_of_aliens_x):
+                self._create_alien(alien_number, row_number)
+    
+    def _create_alien(self, alien_number: int, row_number: int) -> None:
+        """A function to create a new alien whenever it is called"""
+        alien = Alien(self)
+        alien_width = alien.rect.width
+        alien.x = alien_width + (2 * alien_width * alien_number)
+        alien.rect.x = alien.x
+        self.fleet.add(alien)
  
     def _update_screen(self) -> None:
         """Updates the screen each loop"""
