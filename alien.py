@@ -1,9 +1,9 @@
 import pygame
 from pygame.sprite import Sprite
 
-class Alien(Sprite) -> None:
+class Alien(Sprite):
     """A class to represent a single alien"""
-    def __init__ (self, ai_game):
+    def __init__ (self, ai_game)-> None:
         """Intialize the alien and set it's starting position"""
         super().__init__()
         self.screen = ai_game.screen
@@ -21,3 +21,4 @@ class Alien(Sprite) -> None:
         self.y = float(self.rect.y)
     
     def update(self) -> None:
+        self.x += self.settings.alien_speed
