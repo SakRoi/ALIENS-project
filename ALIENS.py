@@ -17,6 +17,7 @@ class AlienInvasion:
         pygame.init()
         self.settings = Settings()
 
+        #set the screen based on settings
         if self.settings.fullscreen == True:
             self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
             self.settings.screen_width = self.screen.get_rect().width
@@ -25,6 +26,8 @@ class AlienInvasion:
             self.screen = pygame.display.set_mode\
                 ((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
+
+        self.stats = GameStats(self)
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -104,6 +107,20 @@ class AlienInvasion:
         if not self.fleet:
             self.bullets.empty()
             self._create_fleet()
+    
+    def _ship_hit(self) -> None:
+        """Respond to the ship being hit by an alien"""
+
+        self.stats.ships_left -= 1
+
+        self.fleet.empty()
+        self.bullets.empty()
+
+        self._create_fleet()
+        self.ship.center_ship()
+
+        #pause for a while
+        sleep(0.5)
     
     def _create_fleet(self) -> None:
         """A helper function to create a fleet"""
