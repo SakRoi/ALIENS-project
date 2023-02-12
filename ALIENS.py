@@ -37,6 +37,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._check_if_fleet_is_destroyed()
             self._update_aliens()
             self._update_screen()
     
@@ -88,6 +89,7 @@ class AlienInvasion:
         """A grouping of bullet related methods"""
         self.bullets.update()
         self._clean_up_bullets()
+        
 
         #Check if any bullets have hit aliens
         collisions = pygame.sprite.groupcollide(self.bullets, self.fleet, True, True)
