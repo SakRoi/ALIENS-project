@@ -116,7 +116,11 @@ class AlienInvasion:
         self.fleet.add(alien)
     
     def _update_aliens(self) -> None:
-        """Updates the aliens each loop"""
+        """
+        Check if the fleet is at an edge,
+        then update the position of the fleet
+        """
+        self._check_fleet_edges()
         self.fleet.update()
     
     def _check_fleet_edges(self) -> None:
@@ -124,7 +128,7 @@ class AlienInvasion:
         for alien in self.fleet.sprites():
             if alien.check_for_edges() == True:
                 self._change_fleet_direction()
-            break
+                break
     
     def _change_fleet_direction(self) -> None:
         """Drops the entire fleet down and changes direction"""
