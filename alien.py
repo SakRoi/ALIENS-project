@@ -19,6 +19,12 @@ class Alien(Sprite):
         # Store the alien's exact horizontal position
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
+
+    def check_for_edges(self) -> bool:
+        """Returns true if alien is next to an edge"""
+        screen_rect = self.screen.get_rect()
+        if self.rect.right >= screen_rect.right or self.rect.left <= 0:
+            return True
     
     def update(self) -> None:
         self.x += self.settings.alien_speed
