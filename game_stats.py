@@ -5,6 +5,8 @@ class GameStats:
         """Intial Statistics"""
         self.settings = ai_game.settings
         self.reset_stats()
+        # Start ALIENS in an active state
+        self.game_active = True
     
     def reset_stats(self) -> None:
         """Intialize statistics that can change during the game"""
