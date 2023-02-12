@@ -118,6 +118,19 @@ class AlienInvasion:
     def _update_aliens(self) -> None:
         """Updates the aliens each loop"""
         self.fleet.update()
+    
+    def _check_fleet_edges(self) -> None:
+        """Checks if fleet has reached an edge of the screen"""
+        for alien in self.fleet.sprites():
+            if alien.check_for_edges() == True:
+                self._change_fleet_direction()
+            break
+    
+    def _change_fleet_direction(self) -> None:
+        """Drops the entire fleet down and changes direction"""
+        for alien in self.fleet.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
 
     def _update_screen(self) -> None:
         """Updates the screen each loop"""
