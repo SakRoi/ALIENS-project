@@ -12,6 +12,9 @@ class Settings:
 
         #Alien's settings
         self.alien_speed = 1.0
+        self.fleet_drop_speed = 10
+        # fleet_direction of 1 represents right, -1 represents left
+        self.fleet_direction = 1
         
         #Ship's settings
         self.ship_speed = 1.5
