@@ -90,7 +90,6 @@ class AlienInvasion:
         self.bullets.update()
         self._clean_up_bullets()
         
-
         #Check if any bullets have hit aliens
         collisions = pygame.sprite.groupcollide(self.bullets, self.fleet, True, True)
     
@@ -137,6 +136,10 @@ class AlienInvasion:
         """
         self._check_fleet_edges()
         self.fleet.update()
+
+        #Check if any aliens hit the ship
+        if pygame.sprite.spritecollideany(self.ship, self.fleet)
+            print("Ship hit!")
     
     def _check_fleet_edges(self) -> None:
         """Checks if fleet has reached an edge of the screen"""
