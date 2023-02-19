@@ -231,6 +231,9 @@ class AlienInvasion:
         if not self.stats.game_active:
             self.play_button.draw_button()
         
+        # Draw the scoreboard
+        self.scoreboard.show_score()
+        
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
