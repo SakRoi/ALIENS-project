@@ -68,7 +68,8 @@ class AlienInvasion:
         if button_clicked == True and self.stats.game_active == False:
             #hide the mouse cursor
             pygame.mouse.set_visible(False)
-
+            
+            #resets values to the starting ones
             self.stats.reset_stats()
             self.stats.game_active = True
 
@@ -157,6 +158,7 @@ class AlienInvasion:
         fleet if it is
         """
         if not self.fleet:
+            self.settings.increase_speed()
             self.bullets.empty()
             self._create_fleet()
 
