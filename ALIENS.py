@@ -109,7 +109,9 @@ class AlienInvasion:
         """A grouping of bullet related methods"""
         self.bullets.update()
         self._clean_up_bullets()
-        
+        self._bullet_collisions()
+    
+    def _bullet_collisions(self) -> None:
         #Check if any bullets have hit aliens
         collisions = pygame.sprite.groupcollide(self.bullets, self.fleet, True, True)
 
@@ -143,6 +145,7 @@ class AlienInvasion:
         ship_height = self.ship.rect.height
         available_space_y = self.settings.screen_height\
                             -(3*alien_height)-ship_height
+        
         number_of_rows_y = available_space_y // (2*alien_height)
 
         for row_number in range(number_of_rows_y):
