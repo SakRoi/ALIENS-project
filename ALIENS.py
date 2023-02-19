@@ -117,6 +117,7 @@ class AlienInvasion:
         if collisions:
             for aliens in collisions.values():
                 self.stats.score += self.settings.alien_points * len(aliens)
+            self.scoreboard.check_high_score()
             self.scoreboard._prep_score()
 
     def _fire_bullet(self) -> None:
@@ -168,6 +169,7 @@ class AlienInvasion:
         fleet if it is
         """
         if not self.fleet:
+            self.stats.level += 1
             self.settings.increase_speed()
             self.bullets.empty()
             self._create_fleet()
@@ -239,7 +241,7 @@ class AlienInvasion:
             self.play_button.draw_button()
         
         # Draw the scoreboard
-        self.scoreboard.show_score()
+        self.scoreboard.draw_stats()
         
         # Make the most recently drawn screen visible.
         pygame.display.flip()
