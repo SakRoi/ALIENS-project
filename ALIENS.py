@@ -66,6 +66,9 @@ class AlienInvasion:
         """A helper method to check if the player has clicked the play button"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked == True and self.stats.game_active == False:
+            #hide the mouse cursor
+            pygame.mouse.set_visible(False)
+
             self.stats.reset_stats()
             self.stats.game_active = True
 
@@ -197,6 +200,8 @@ class AlienInvasion:
             sleep(0.5)
         else:
             self.stats.game_active = False
+            #Set the mouse visible after dying
+            pygame.mouse.set_visible(True)
 
     def _check_aliens_bottom(self) -> None:
         """Checks if aliens have hit the bottom of the screen"""
