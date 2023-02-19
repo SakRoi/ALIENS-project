@@ -6,6 +6,9 @@ class GameStats:
         self.settings = ai_game.settings
         self.reset_stats()
 
+        #Highscore should never be reset
+        self.high_score = 0
+
         # Start ALIENS in an inactive state
         self.game_active = False
 

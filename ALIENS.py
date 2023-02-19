@@ -115,7 +115,8 @@ class AlienInvasion:
 
         #checks if there have been any collisions
         if collisions:
-            self.stats.score += self.settings.alien_points
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
             self.scoreboard._prep_score()
 
     def _fire_bullet(self) -> None:

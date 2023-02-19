@@ -16,6 +16,7 @@ class Scoreboard:
 
         #Prepare the intial score screen
         self._prep_score()
+        self._prep_highscore()
 
     def _prep_score(self) -> None:
         """Renders the scoreboard"""
@@ -25,6 +26,16 @@ class Scoreboard:
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.screen_rect.right - 20
         self.score_rect.top = 20
+
+    def _prep_highscore(self) -> None:
+        """Renders the highscore scoreboard"""
+        high_score_str = str(self.stats.high_score)
+        self.high_score_image = self.font.render(high_score_str, True, self.text_color, self.settings.background_color)
+
+        #Center the high score on the top of the screen
+        self.score_rect = self.high_score_image.get_rect()
+        self.score_rect.center = self.screen_rect.center
+        self.score_rect.top = self.screen_rect.top + 20
     
     def show_score(self) -> None:
         """Draws the score on the screen"""
