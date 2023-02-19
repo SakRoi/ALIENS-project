@@ -45,7 +45,7 @@ class Scoreboard:
         self.high_score_rect.top = 20
     
     def _prep_level(self) -> None:
-        level_str = "Level: " + str(self.stats.level)
+        level_str = str(self.stats.level)
         self.level_image = self.font.render(level_str, True, self.text_color, self.settings.background_color)
 
         #position below the score
