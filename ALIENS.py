@@ -38,7 +38,7 @@ class AlienInvasion:
         self._create_fleet()
 
         self.play_button = Button(self, "Play")
-        self.
+        self.scoreboard = Scoreboard(self)
 
     def run_game(self) -> None:
         """Start the main loop for the game"""
