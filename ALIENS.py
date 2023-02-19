@@ -70,12 +70,13 @@ class AlienInvasion:
             pygame.mouse.set_visible(False)
             
             #resets values to the starting ones
+            self.settings.init_dynamic_settings()
             self.stats.reset_stats()
             self.stats.game_active = True
 
             self.fleet.empty()
             self.bullets.empty()
-
+            
             self._create_fleet()
             self.ship.center_ship()
 
