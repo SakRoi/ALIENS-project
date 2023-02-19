@@ -10,6 +10,10 @@ class Settings:
         self.screen_height = 800
         self.background_color = (0, 0, 100)
     
+        #Alien's settings
+        self.alien_points = 50
+
+
         #Ship's settings
         self.ship_limit = 3
 

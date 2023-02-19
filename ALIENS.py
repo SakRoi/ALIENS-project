@@ -75,6 +75,7 @@ class AlienInvasion:
             self.settings.init_dynamic_settings()
             self.stats.reset_stats()
             self.stats.game_active = True
+            self.scoreboard._prep_score()
 
             self.fleet.empty()
             self.bullets.empty()
@@ -111,6 +112,11 @@ class AlienInvasion:
         
         #Check if any bullets have hit aliens
         collisions = pygame.sprite.groupcollide(self.bullets, self.fleet, True, True)
+
+        #checks if there have been any collisions
+        if collisions:
+            self.stats.score += self.settings.alien_points
+            self.scoreboard._prep_score()
 
     def _fire_bullet(self) -> None:
         """Create a new bullet and add it to the bullets group"""
