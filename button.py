@@ -10,3 +10,6 @@ class Button:
         #Dimensions and the properties of the button itself
         self.width, self.height = 200, 50
         self.button_color = (0, 255, 0)
+        self.text_color = (255,255,255)
+        self.font = pygame.font.SysFont(None, 48)
+        
