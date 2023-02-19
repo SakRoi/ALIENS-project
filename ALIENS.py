@@ -205,6 +205,10 @@ class AlienInvasion:
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
+        # Draw the play button if the game state is inactive
+        if self.stats.game_active == False:
+            self.play_button.draw_button()
+
 if __name__ == "__main__":
     ai = AlienInvasion()
     ai.run_game()
