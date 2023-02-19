@@ -24,8 +24,12 @@ class Ship:
         #Movement flags
         self.moving_right = False
         self.moving_left = False
-    
+
     def update(self) -> None:
+        """
+        Moves the ship on the screen based on the moving_right and moving_left
+        attributes. Updates ship's rect to be the new x-axis value
+        """
         if self.moving_right == True and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
         if self.moving_left == True and self.rect.left > 0:
@@ -34,11 +38,11 @@ class Ship:
         #Updates rect object to be self.x
         self.rect.x = self.x
 
-    
+
     def blitme(self) -> None:
         """Draw the ship at it's current location."""
         self.screen.blit(self.image, self.rect)
-    
+
     def center_ship(self) -> None:
         """
         Centers the ship

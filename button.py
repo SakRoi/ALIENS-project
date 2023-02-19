@@ -1,6 +1,7 @@
 import pygame.font
 
 class Button:
+    """A class to handle the start game button"""
 
     def __init__(self, ai_game, msg:str) -> None:
         """Intializes the button's attributes"""
@@ -19,5 +20,9 @@ class Button:
 
         self._prep_msg(msg)
 
-    def _prep_msg(msg: str) -> None:
-        """"""
+    def _prep_msg(self, msg: str) -> None:
+        """
+        Renders msg into a picture and centers
+        it to the button
+        """
+        self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
