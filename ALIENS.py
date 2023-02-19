@@ -48,18 +48,32 @@ class AlienInvasion:
                 self._update_bullets()
                 self._check_if_fleet_is_destroyed()
                 self._update_aliens()
-                self._update_screen()
-            else:
-                pass
+            self._update_screen()
 
     def _check_events(self) -> None:
         """Respond to keypresses and mouse events"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                self._check_play_button(mouse_pos)
             else:
                 self._check_keyup_events(event)
                 self._check_keydown_events(event)
+
+    def _check_play_button(self, mouse_pos: tuple) -> None:
+        """A helper method to check if the player has clicked the play button"""
+        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+        if button_clicked == True and self.stats.game_active == False:
+            self.stats.reset_stats()
+            self.stats.game_active = True
+
+            self.fleet.empty()
+            self.bullets.empty()
+
+            self._create_fleet()
+            self.ship.center_ship()
 
     def _check_keyup_events(self, event) -> None:
         """Helper function for keyup events"""
@@ -202,12 +216,13 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.fleet.draw(self.screen)
-        # Make the most recently drawn screen visible.
-        pygame.display.flip()
 
         # Draw the play button if the game state is inactive
-        if self.stats.game_active == False:
+        if not self.stats.game_active:
             self.play_button.draw_button()
+        
+        # Make the most recently drawn screen visible.
+        pygame.display.flip()
 
 if __name__ == "__main__":
     ai = AlienInvasion()
