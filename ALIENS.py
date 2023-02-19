@@ -172,8 +172,14 @@ class AlienInvasion:
         fleet if it is
         """
         if not self.fleet:
+            #increase level
             self.stats.level += 1
+            self.scoreboard._prep_level()
+
+            #increase speed
             self.settings.increase_speed()
+
+            #clear the screen from bullets and create a new fleet
             self.bullets.empty()
             self._create_fleet()
 
